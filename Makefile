@@ -1,13 +1,12 @@
 #makefile for sfmlgame; some note-to-self notes are listed below
 
-#this tells where GCC looks for headers by default
+#this shows where GCC looks for headers by default
 #`gcc -print-prog-name=cc1plus` -v
 
 #to view invisible files on Mac OSX type next 2 lines into terminal
 #defaults write com.apple.Finder AppleShowAllFiles FALSE
 #killall Finder
 
-#$(variableName) is similar to a Java EL expression
 #for help with makefile variable assignment visit http://stackoverflow.com/questions/448910/makefile-variable-assignment
 
 #export DYLD_LIBRARY_PATH="${DYLD_LIBRARY_PATH}:./SFML-2.0-osx/lib" && export DYLD_FRAMEWORK_PATH="${DYLD_FRAMEWORK_PATH}:./SFML-2.0-osx/Frameworks"
@@ -29,7 +28,7 @@ SFMLLINKFW := -framework sfml-window -framework sfml-graphics -framework sfml-au
 SFMLLINK := -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-system 
 
 platformer : $(OBJECTS)
-	$(CC) build/*.o -o sfmlgame -L$(SFMLLIB) -L$(SFMLFW) $(SFMLLINK) 
+	$(CC) build/*.o -o sfmlgame -L$(SFMLLIB) $(SFMLLINK) 
 
 Animation.o : src/Animation.cpp $(HDIR)/Animation.hpp
 	mkdir -p ./build
